@@ -21,14 +21,22 @@ class Header extends Component {
     const { userInfo, isItLoading } = this.state;
     return (
       <header data-testid="header-component">
-        {isItLoading ? <Loading /> : (
-          <p data-testid="header-user-name">{userInfo}</p>
-        )}
-        <Link to="/search" data-testid="link-to-search">Search</Link>
-        <br />
-        <Link to="/favorites" data-testid="link-to-favorites">Favorites</Link>
-        <br />
-        <Link to="/profile" data-testid="link-to-profile">Profile</Link>
+        {
+          isItLoading ? <Loading /> : (
+            <>
+              <p data-testid="header-user-name">{userInfo}</p>
+              <Link data-testid="link-to-search" to="/search">
+                Search
+              </Link>
+              <br />
+              <Link data-testid="link-to-favorites" to="/favorites">Favorites</Link>
+              <br />
+              <Link data-testid="link-to-profile" to="/profile">Profile</Link>
+
+            </>
+
+          )
+        }
       </header>
     );
   }

@@ -4,7 +4,7 @@ import { createUser } from '../services/userAPI';
 import Loading from '../Components/Loading';
 
 const NAME_LIMIT_LENGTH = 3;
-const THREE_SECONDS = 3000;
+// const THREE_SECONDS = 3000;
 
 class Login extends Component {
   state = {
@@ -29,15 +29,13 @@ class Login extends Component {
     }
   };
 
-  handleClickSubmit = (event) => {
+  handleClickSubmit = async (event) => {
     event.preventDefault();
     this.setState({ isItLoading: true });
     const { history } = this.props;
     const { name } = this.state;
-    createUser({ name });
-    setInterval(() => {
-      history.push('/search');
-    }, THREE_SECONDS);
+    await createUser({ name });
+    history.push('/search');
   };
 
   render() {
